@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>eelテスト</title>
+        <link rel="stylesheet" href="./style.css">
+        
+    </head>
+    <body>
+        <h2>eelテスト</h2>
+        
+        <form name="Form1" method="post" action="#" onsubmit="return formCheck()">
+            <div>
+               <label for="csv">CSVファイル名</label>
+                <input type="text" name="csv_file" >
+            </div>
+            <div>
+                <label for="input">検索ワード</label>
+                <input type="text" name="search_word" >
+                <input type="submit" value="検索" onclick="return formCheck();"> 
+            </div>
+            <div>
+                <input type="textarea" name="log" id="log" rows="10" cols="50" readonly>
+            </div>
+        </form> 
+
+        <script type="text/javascript" src="./eel.js"></script>
+        <script type="text/javascript">
+            async function test() {
+                    let result = await eel.python_function2()();
+                    console.log(result);
+            }
+            function formCheck(){
+                //必須チェック
+                if( Form1.csv_file.value == "" || Form1.search_word.value == ""){
+                    window . alert('必須項目を入力してください' );
+                    return false;
+                }
+                //関数の呼び出し form view.py
+                //eel.get_kimetsu_search(Form1.search_word.value);
+
+                //ログの取得
+                test();
+            }
+            
+        </script> 
+    </body>
+</html>
